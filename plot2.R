@@ -17,7 +17,7 @@ powerconsumption <- read.table("household_power_consumption.txt",
                                               rep("numeric",7)), col.names = datacolnames, 
                                na.strings = "?")
 
-# making a new variable with the 
+# making a new date and time variable obsTime with the date and time character variables
 
 powerconsumption$obsTime <- strptime(paste(powerconsumption$Date,powerconsumption$Time),"%d/%m/%Y %H:%M:%S")
 
