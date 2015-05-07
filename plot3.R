@@ -14,12 +14,14 @@ datacolnames<- as.character(read.table("household_power_consumption.txt",
 powerconsumption <- read.table("household_power_consumption.txt",
                                sep = ";", skip = 66637, nrows=2880,
                                colClasses = c("character","character", 
-                                              rep("numeric",7)), col.names = datacolnames, 
+                                              rep("numeric",7)), 
+                               col.names = datacolnames, 
                                na.strings = "?")
 
 # making a new variable with the 
 
-powerconsumption$obsTime <- strptime(paste(powerconsumption$Date,powerconsumption$Time),"%d/%m/%Y %H:%M:%S")
+powerconsumption$obsTime <- strptime(paste(powerconsumption$Date, powerconsumption$Time),
+                                     "%d/%m/%Y %H:%M:%S")
 
 
 # Making the plot and saving it to a png file
@@ -32,13 +34,14 @@ powerconsumption$obsTime <- strptime(paste(powerconsumption$Date,powerconsumptio
 png(filename="plot3.png")
 
 with(powerconsumption, {
-        plot(obsTime, Sub_metering_1, xlab="", ylab="Energy sub metering", 
+        plot(obsTime, Sub_metering_1, xlab="Date and Time", ylab="Energy sub metering (watt-hour)", 
              type="l")
         lines(obsTime, Sub_metering_2, col = "red")
         lines(obsTime, Sub_metering_3, col = "blue")
 })
 
-legend("topright",lty=1, col=c("blue","red"),legend=c("Sub_metering_1","Sub_metering_2","Sub_metering_3"))
+legend("topright", lty = 1, col = c("blue", "red"),
+       legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
 
 
 dev.off()

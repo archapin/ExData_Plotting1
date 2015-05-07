@@ -14,12 +14,13 @@ datacolnames<- as.character(read.table("household_power_consumption.txt",
 powerconsumption <- read.table("household_power_consumption.txt",
                                sep = ";", skip = 66637, nrows=2880,
                                colClasses = c("character","character", 
-                                              rep("numeric",7)), col.names = datacolnames, 
-                               na.strings = "?")
+                                              rep("numeric",7)), 
+                               col.names = datacolnames, na.strings = "?")
 
 # making a new variable with the 
 
-powerconsumption$obsTime <- strptime(paste(powerconsumption$Date,powerconsumption$Time),"%d/%m/%Y %H:%M:%S")
+powerconsumption$obsTime <- strptime(paste(powerconsumption$Date, powerconsumption$Time),
+                                     "%d/%m/%Y %H:%M:%S")
 
 
 # Making the plot and saving it to a png file
@@ -31,5 +32,7 @@ powerconsumption$obsTime <- strptime(paste(powerconsumption$Date,powerconsumptio
 
 png(filename="plot2.png")
 
-plot(powerconsumption$obsTime,powerconsumption$Global_active_power,type="l",xlab="",ylab="Global Active Power (kilowatts)")
+plot(powerconsumption$obsTime, powerconsumption$Global_active_power, type = "l",
+     xlab = "Date and Time", ylab = "Global Active Power (kilowatts)")
+
 dev.off()
