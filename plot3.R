@@ -25,11 +25,20 @@ powerconsumption$obsTime <- strptime(paste(powerconsumption$Date,powerconsumptio
 # Making the plot and saving it to a png file
 # _______________
 
-# The plot2.png submitted has the x labels in Spanish, which is the locale 
+# The plot3.png submitted has the x labels in Spanish, which is the locale 
 # for my computer
 
 
-png(filename="plot2.png")
+png(filename="plot3.png")
 
-plot(powerconsumption$obsTime,powerconsumption$Global_active_power,type="l",xlab="",ylab="Global Active Power (kilowatts)")
+with(powerconsumption, {
+        plot(obsTime, Sub_metering_1, xlab="", ylab="Energy sub metering", 
+             type="l")
+        lines(obsTime, Sub_metering_2, col = "red")
+        lines(obsTime, Sub_metering_3, col = "blue")
+})
+
+legend("topright",lty=1, col=c("blue","red"),legend=c("Sub_metering_1","Sub_metering_2","Sub_metering_3"))
+
+
 dev.off()
