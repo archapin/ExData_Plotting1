@@ -12,7 +12,7 @@ datacolnames<- as.character(read.table("household_power_consumption.txt",
 #  Reading the lines with the information for dates 2007-02-01 to 2007-02-02
 
 powerconsumption <- read.table("household_power_consumption.txt",
-                         sep = ";", skip = 66636, nrows=2880,
+                         sep = ";", skip = 66637, nrows=2880,
                          colClasses = c("character","character", 
                         rep("numeric",7)), col.names = datacolnames, 
                         na.strings = "?")
