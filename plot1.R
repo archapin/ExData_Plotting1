@@ -18,9 +18,11 @@ powerconsumption <- read.table("household_power_consumption.txt",
                         na.strings = "?")
 
 
-# Making the plot
-# 
+# Making the plot and saving it to a png file
+# _______________
 
-
+png(filename="plot1.png")
 hist(powerconsumption$Global_active_power,col="red",main="Global Active Power",xlab="Global Active Power (kilowatts)")
+dev.off()
+
 
